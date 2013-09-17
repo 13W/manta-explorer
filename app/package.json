@@ -1,0 +1,16 @@
+{
+  "name": "FileExplorer",
+  "description": "Simple file explorer.",
+  "version": "0.0.1",
+  "main": "index.html",
+  "window": {
+    "toolbar": true,
+    "width": 660,
+    "height": 500
+  },
+  "dependencies": {
+    "manta": "~1.1.1",
+    "jade": "~0.35.0",
+    "rc": "~0.3.1"
+  }
+}

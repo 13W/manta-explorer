@@ -1,0 +1,5 @@
+{
+	"keyFile": "path to public openssh key",
+	"keyId": "public key id",
+	"user": "joyent username"
+}
