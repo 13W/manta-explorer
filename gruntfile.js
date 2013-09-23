@@ -41,11 +41,27 @@ module.exports = function(grunt) {
 					callback: shellLog
 				}
 			},
-			launch: {
-				command: [
+      pack_unix: {
+        command: [
+          'cd app',
+          'zip -qr ../output/app.nw .',
+        ].join('&&'),
+        options: {
+          callback: shellLog
+        }
+      },
+      launch_windows: {
+        command: [
 					'bin\\nw.exe app --config=config.json'
+        ],
+				options: {
+					callback: shellLog
+				}
+      },
+			launch_unix: {
+				command: [
+          'open -n -a node-webkit ./app'
 				].join('&&'),
-
 				options: {
 					callback: shellLog
 				}
@@ -56,9 +72,12 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-shell');
 
 	grunt.registerTask('default', ['shell:npm_install']);
-	grunt.registerTask('run', ['shell:launch']);
 
 	if (process.platform === 'win32') {
 		grunt.registerTask('pack', ['shell:pack_windows']);
-	}
+    grunt.registerTask('run', ['shell:launch_windows']);
+	} else {
+		grunt.registerTask('pack', ['shell:pack_unix']);
+    grunt.registerTask('run', ['shell:launch_unix']);
+  }
 };

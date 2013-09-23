@@ -2,6 +2,7 @@ global.$ = $;
 
 var abar = require('./lib/address_bar');
 var folder_view = require('./lib/folder_view');
+var config = require('./lib/config');
 var path = require('path');
 var shell = require('nw.gui').Shell;
 
@@ -9,8 +10,8 @@ $(document).ready(function() {
   var folder = new folder_view.Folder($('#files'));
   var addressbar = new abar.AddressBar($('#addressbar'));
 
-  folder.open('/yaniv/stor');
-  addressbar.set('/yaniv/stor');
+  folder.open('/' + config.user + '/public');
+  addressbar.set('/' + config.user + '/public');
 
   folder.on('navigate', function(dir, type) {
 
