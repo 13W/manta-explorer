@@ -4,7 +4,7 @@ var config = require('./config.js');
 console.log(config);
 
 var client = manta.createClient({
-    sign: manta.privateKeySigner(config.sign),
+    sign: manta.cliSigner(config.sign),
     user: config.user,
     url: config.url
 });
